@@ -14,8 +14,12 @@ export const signup = async (req, res) => {
     }
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(password, salt);
-    const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${userName}`;
-    const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${userName}`;
+    const boyProfilePic = `https://randomuser.me/api/portraits/thumb/men/${Math.floor(
+      Math.random() * 100
+    )}.jpg`;
+    const girlProfilePic = `https://randomuser.me/api/portraits/thumb/women/${Math.floor(
+      Math.random() * 100
+    )}.jpg`;
 
     const newUser = new User({
       fullName,

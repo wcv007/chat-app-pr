@@ -1,18 +1,31 @@
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
+import Login from "./pages/login/Login";
+import SignUp from "./pages/signup/SignUp";
+import Home from "./pages/home/Home";
+import { Toaster } from "react-hot-toast";
+import { useAuthContext } from "./context/AuthContext";
 
 function App() {
+  const { authUser } = useAuthContext();
   return (
-    <>
-      <button className="btn btn-active">Default</button>
-      <button className="btn btn-active btn-neutral">Neutral</button>
-      <button className="btn btn-active btn-primary">Primary</button>
-      <button className="btn btn-active btn-secondary">Secondary</button>
-      <button className="btn btn-active btn-accent">Accent</button>
-      <button className="btn btn-active btn-ghost">Ghost</button>
-      <button className="btn btn-active btn-link">Link</button>
-    </>
+    <div className="p-4 h-screen flex items-center justify-center">
+      <Routes>
+        <Route
+          path="/"
+          element={authUser ? <Home /> : <Navigate to={"/login"} />}
+        />
+        <Route
+          path="/login"
+          element={authUser ? <Navigate to={"/"} /> : <Login />}
+        ></Route>
+        <Route
+          path="/signup"
+          element={authUser ? <Navigate to={"/"} /> : <SignUp />}
+        ></Route>
+      </Routes>
+      <Toaster />
+    </div>
   );
 }
 
