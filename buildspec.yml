@@ -6,15 +6,13 @@ phases:
       nodejs: 23
     commands:
       - cd frontend
-      - npm install
+      - npm ci
 
   build:
     commands:
       - npm run build
-      - cd ../backend
-      - npm install
 
 artifacts:
+  base-directory: frontend/dist
   files:
-    - backend/**/*
-    - frontend/dist/**/*
+    - "**/*"
