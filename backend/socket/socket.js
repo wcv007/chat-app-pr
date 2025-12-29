@@ -5,6 +5,8 @@ import express from "express";
 const app = express();
 
 const server = http.createServer(app);
+const deploylink =
+  "https://chat-app-pr-m1hz.onrender.com" || "http://localhost:5173";
 const io = new Server(server, {
   cors: {
     origin: ["http://localhost:5173"],

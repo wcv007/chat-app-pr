@@ -2,7 +2,7 @@ import { createContext, useEffect, useState, useContext } from "react";
 import { useAuthContext } from "./AuthContext";
 import io from "socket.io-client";
 const deploylink =
-  "https://chat-app-pr-m1hz.onrender.com/" || "http://localhost:3000";
+  "https://chat-app-pr-m1hz.onrender.com" || "http://localhost:3000";
 export const SocketContext = createContext();
 export const useSocketContext = () => {
   return useContext(SocketContext);
