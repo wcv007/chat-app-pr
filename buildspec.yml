@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 23
+      nodejs: 22
     commands:
       - cd frontend
       - npm ci
@@ -11,6 +11,7 @@ phases:
   build:
     commands:
       - npm run build
+      - ls -la dist # DEBUG LINE (important)
 
 artifacts:
   base-directory: frontend/dist
